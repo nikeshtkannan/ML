@@ -1,3 +1,4 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import fetch_california_housing
@@ -6,8 +7,7 @@ from sklearn.model_selection import train_test_split
 
 # 1. Load dataset
 data = fetch_california_housing()
-X = data.data[:, [5]]  # Average number of bedrooms/rooms? Feature: AveRooms is index 3; use AveRooms below
-X = data.data[:, [3]]  # Average rooms
+X = data.data[:, [2]]
 y = data.target
 
 # 2. Split the dataset
@@ -45,10 +45,8 @@ print("MSE:", mean_squared_error(y_test, pred2))
 print("R2:", r2_score(y_test, pred2))
 
 # 7. Plot the fitted lines
-plt.scatter(X_test[:, 1], y_test, s=5, label="Actual data")
-plt.plot(X_test[:, 1], pred1, "r.", label="Gradient Descent")
-plt.plot(X_test[:, 1], pred2, "g.", label="Normal Equation")
-plt.xlabel("Average Rooms")
-plt.ylabel("House Price (in $100,000s)")
-plt.legend()
+# 7. Plot the fitted lines
+plt.scatter(X_test[:, 1], y_test)
+plt.plot(X_test[:, 1], pred1, 'r')
+plt.plot(X_test[:, 1], pred2, 'g')
 plt.show()
